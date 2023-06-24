@@ -84,7 +84,7 @@
             Technologies:
         </h3>
         <p>
-            {{ $project->technologies }}
+            {{ $project->technology?->name }}
         </p>
 
 
