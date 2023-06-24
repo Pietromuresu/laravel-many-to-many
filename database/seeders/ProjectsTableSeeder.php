@@ -17,7 +17,7 @@ class ProjectsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for($i = 0; $i < 10; $i++){
+        for($i = 0; $i < 30; $i++){
 
             $new_project = new Project();
             $new_project->type_id = Type::inRandomOrder()->first()->id;
@@ -26,7 +26,7 @@ class ProjectsTableSeeder extends Seeder
             $new_project->purpose = $faker->sentence(10);
             $new_project->team_members = $faker->sentence(3);
             $new_project->description = $faker->text(1000);
-            $new_project->technologies = $faker->sentence(10);
+
             $new_project->repository = "https://github.com/Pietromuresu/laravel-auth";
             $new_project->project_manager = $faker->name();
             $new_project->save();

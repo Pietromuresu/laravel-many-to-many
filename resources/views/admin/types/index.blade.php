@@ -44,7 +44,7 @@
 
                     </form>
                 </td>
-                <td>
+                <td class="pm-buttons-container ">
 
                     <button onclick="updateType({{$type->id}})" class="btn pm-bg-dark text-white">
                         Save
@@ -62,6 +62,7 @@
                         </button>
                     </form>
                 </td>
+
             </tr>
             @endforeach
         </tbody>

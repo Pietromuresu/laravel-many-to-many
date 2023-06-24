@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Technology;
 
-class TechnologyController extends Controller
+
+class TechnologiesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +17,9 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        return view('admin.technologies.index');
+        $technologies = Technology::all();
+
+        return view('admin.technologies.index', compact('technologies'));
     }
 
     /**
@@ -36,7 +40,12 @@ class TechnologyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newTechnology = new Technology();
+        $form_data = $request->all();
+        $newTechnology->fill($form_data);
+
+        $newTechnology->save();
+        return redirect()->back();
     }
 
     /**
@@ -68,9 +77,17 @@ class TechnologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Technology $technology)
     {
-        //
+        $val_data = $request->validate(
+            [
+                'name' => "required|max:50|unique:technologies"
+            ]
+        );
+
+        $technology->update($val_data);
+
+        return redirect()->back()->with('message', 'Updated successfully');
     }
 
     /**
@@ -79,8 +96,12 @@ class TechnologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Technology $technology)
     {
-        //
+        $technology->delete();
+
+        return redirect()->back()->with('message', 'Deleted successfully');
     }
 }
+
+
