@@ -107,17 +107,74 @@
         <div class="mb-3">
             {{--Technologies text input --}}
 
-            <label for="technologies" class="form-label">
+            <p>
                 <strong>{{$action}} Technologies</strong>
-            </label>
+            </p>
             <div class="input-group">
-                <input
-                  value="{{old('technologies', $project?->technologies)}}"
-                  type="text"
-                  class="form-control"
-                  id="technologies"
-                  name="technologies"
-                  aria-describedby="basic-addon3 basic-addon4">
+
+                <div role="group" aria-label="Basic radio toggle button group">
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      name="[technologies]"
+                      id="btnradio1"
+                      autocomplete="off"
+                      checked>
+                    <label class="btn btn-outline-dark ms-4" for="btnradio1">
+                        Vue.Js
+                    </label>
+
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      name="[technologies]"
+                      id="btnradio2"
+                      autocomplete="off">
+                    <label class="btn btn-outline-dark" for="btnradio2">
+                        HTML
+                    </label>
+
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      name="[technologies]"
+                      id="btnradio3"
+                      autocomplete="off">
+                    <label class="btn btn-outline-dark" for="btnradio3">
+                        CSS
+                    </label>
+
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      name="[technologies]"
+                      id="btnradio4"
+                      autocomplete="off">
+                    <label class="btn btn-outline-dark" for="btnradio4">
+                        C++
+                    </label>
+
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      name="[technologies]"
+                      id="btnradio5"
+                      autocomplete="off">
+                    <label class="btn btn-outline-dark" for="btnradio5">
+                        C
+                    </label>
+
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      name="[technologies]"
+                      id="btnradio6"
+                      autocomplete="off">
+                    <label class="btn btn-outline-dark" for="btnradio6">
+                        Python
+                    </label>
+                  </div>
+
             </div>
         </div>
         <div class="mb-3">
