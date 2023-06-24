@@ -85,6 +85,7 @@ class TechnologiesController extends Controller
             ]
         );
 
+
         $technology->update($val_data);
 
         return redirect()->back()->with('message', 'Updated successfully');
