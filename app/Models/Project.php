@@ -18,7 +18,7 @@ class Project extends Model
         "name",
         "purpose",
         "type_id",
-        "technologies",
+
         "team_members",
         "description",
         "project_manager",

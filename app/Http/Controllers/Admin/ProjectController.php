@@ -61,12 +61,10 @@ class ProjectController extends Controller
             $form_data['image_path'] = Storage::put('uploads', $form_data['image']);
         }
 
-
         $new_project->fill($form_data);
-
+        $new_project->save();
 
         $new_project->technologies()->attach($form_data['technologies']);
-        $new_project->save();
 
         return redirect()->route('admin.projects.show', $new_project);
     }
@@ -131,6 +129,12 @@ class ProjectController extends Controller
             $form_data['original_img_name'] = $request->file('image')->getClientOriginalName();
 
             $form_data['image_path'] = Storage::put('uploads', $form_data['image']);
+        }
+
+        if(array_key_exists('technologies', $form_data)){
+            $project->technologies()->sync($form_data['technologies']);
+        }else {
+            $project->technologies()->detach();
         }
 
         $project->update($form_data);

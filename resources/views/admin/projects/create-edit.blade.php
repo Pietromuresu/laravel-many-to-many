@@ -118,12 +118,18 @@
                         type="checkbox"
                         class="btn-check"
                         name="technologies[]"
-                        id="btnradio1"
-                        value="VUE"
+                        id="btnradio{{$technology->id}}"
+                        value="{{$technology->id}}"
                         autocomplete="off"
-                        checked>
-                        <label class="btn btn-outline-dark ms-4" for="btnradio1">
-                            Vue.Js
+                        @if($project?->technologies->contains($technology->id))
+                            checked
+                        @elseif(in_array($technology->id, old('technologies', [])) )
+                            checked
+                        @endif
+                        >
+
+                        <label class="btn btn-outline-dark ms-4 my-3" for="btnradio{{$technology->id}}">
+                            {{$technology->name}}
                         </label>
                     @endforeach
 

@@ -84,7 +84,11 @@
             Technologies:
         </h3>
         <p>
-            {{ $project->technology?->name }}
+            @foreach ($project->technologies as $technology)
+            <div class="badge bg-dark fs-6">
+                {{ $technology?->name }}
+            </div>
+            @endforeach
         </p>
 
 
