@@ -9,6 +9,7 @@ use Illuminate\Pagination\Paginator;
 use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 class ProjectController extends Controller
 {
     /**
@@ -30,12 +31,13 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $technologies = Technology::all();
         $method = "POST";
         $route = route('admin.projects.store');
         $project = null;
         $action = "Add";
         $types = Type::all();
-        return view('admin.projects.create-edit', compact('project', 'method', 'route', 'action', 'types'));
+        return view('admin.projects.create-edit', compact('project', 'method', 'route', 'action', 'types', 'technologies'));
     }
 
     /**
@@ -62,6 +64,8 @@ class ProjectController extends Controller
 
         $new_project->fill($form_data);
 
+
+        $new_project->technologies()->attach($form_data['technologies']);
         $new_project->save();
 
         return redirect()->route('admin.projects.show', $new_project);
@@ -93,11 +97,12 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        $technologies = Technology::all();
         $method = "PUT";
         $route = route('admin.projects.update' , $project);
         $action = "Edit";
         $types = Type::all();
-        return view('admin.projects.create-edit', compact('project', 'method', 'route', 'action', 'types'));
+        return view('admin.projects.create-edit', compact('project', 'method', 'route', 'action', 'types', 'technologies'));
     }
 
     /**

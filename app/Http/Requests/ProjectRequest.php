@@ -27,7 +27,6 @@ class ProjectRequest extends FormRequest
             "name" => "required|max:50|min:3",
             "purpose" => "required|max:255|min:10",
             "description" => "required|min:20",
-            "technologies" => "required|max:255|min:3",
             "repository" => "required|max:255|min:3",
             "is_done" => "required",
             "project_manager" => "max:50",

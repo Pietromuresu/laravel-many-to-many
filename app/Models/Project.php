@@ -18,9 +18,9 @@ class Project extends Model
         "name",
         "purpose",
         "type_id",
+        "technologies",
         "team_members",
         "description",
-        "technologies",
         "project_manager",
         "repository",
         "is_done",
@@ -54,6 +54,6 @@ class Project extends Model
     }
 
     public function technologies(){
-        return $this->hasMany(Technology::class);
+        return $this->belongsToMany(Technology::class);
     }
 }
