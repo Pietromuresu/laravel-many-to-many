@@ -9,8 +9,11 @@
         <div class="pm-card-title position-relative">
 
             <h4 class="text-dark">{{$project->name}}</h4>
-            <span>{{$project->type?->name}}</span>
+            <span class="d-block">{{$project->type?->name}}</span>
 
+            @foreach ($project->technologies as $technology)
+                <span class="badge bg-dark">{{$technology->name}}</span>
+            @endforeach
         </div>
 
         <p class="mt-4">
